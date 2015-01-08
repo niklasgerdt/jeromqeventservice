@@ -24,12 +24,12 @@ public class JeroMqAddresses {
     @Bean(name = "inAddresses")
     @Profile("jero")
     public JeroMqAddressContainer inAddresses() {
-        return new JeroMqAddressContainer(Arrays.asList("tcp://localhost:5000", "tcp://localhost:5001", "tcp://localhost:5002", "tcp://localhost:5003"));
+        return new JeroMqAddressContainer(Arrays.asList("tcp://169.1.1.2:5000", "tcp://169.1.1.2:5001", "tcp://169.1.1.2:5002", "tcp://169.1.1.2:5003"));
     }
 
     @Bean(name = "outAddress")
     @Profile("jero")
     public JeroMqAddressContainer outAddress() {
-        return new JeroMqAddressContainer(Arrays.asList("tcp://localhost:6000"));
+        return new JeroMqAddressContainer(Arrays.asList("tcp://169.1.1.1:6000"));
     }
 }

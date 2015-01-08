@@ -14,7 +14,6 @@ import org.zeromq.ZMQ;
 @Profile({ "jero", "jerotest" })
 public class JeroMqEventService implements EventService {
     private final static Logger logger = LoggerFactory.getLogger(JeroMqEventService.class);
-    @Autowired(required = true)
     private NetworkContext context;
     private final List<String> inAddresses;
     private String outAddress;
@@ -22,7 +21,7 @@ public class JeroMqEventService implements EventService {
     private Socket pub;
 
     @Autowired
-    public JeroMqEventService(NetworkContext context, final JeroMqAddressContainer outAddress,
+    public JeroMqEventService(final NetworkContext context, final JeroMqAddressContainer outAddress,
             final JeroMqAddressContainer inAddresses) {
         this.context = context;
         this.outAddress = outAddress.getAddresses().get(0);

@@ -1,6 +1,7 @@
 package mom.eventservice.jeromq;
 
 import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 public class Socket {
     private static final int DEF_TO = 10000;
@@ -17,15 +18,13 @@ public class Socket {
     }
 
     public void send(String notification) {
-        socket.send(notification);
+        ZMsg msg = ZMsg.newStringMsg(notification);
+        msg.send(socket);
+        // socket.send(notification);
     }
 
     public void close() {
         socket.close();
-    }
-
-    public byte[] recv() {
-        return socket.recv();
     }
 
     public void connect(String address) {
@@ -34,7 +33,12 @@ public class Socket {
     }
 
     public String recvStr() {
-        return socket.recvStr();
+        ZMsg msg = ZMsg.recvMsg(socket);
+        if (msg == null)
+            return null;
+        byte[] bytes = msg.getFirst().getData();
+        return new String(bytes);
+        // return socket.recvStr();
     }
 
     public void subscribe(byte[] bytes) {
