@@ -18,9 +18,9 @@ public class Socket {
     }
 
     public void send(String notification) {
-        ZMsg msg = ZMsg.newStringMsg(notification);
-        msg.send(socket);
-        // socket.send(notification);
+        //ZMsg msg = ZMsg.newStringMsg(notification);
+        //msg.send(socket);
+        socket.send(notification);
     }
 
     public void close() {
@@ -38,7 +38,6 @@ public class Socket {
             return null;
         byte[] bytes = msg.getFirst().getData();
         return new String(bytes);
-        // return socket.recvStr();
     }
 
     public void subscribe(byte[] bytes) {
