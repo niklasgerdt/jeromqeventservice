@@ -24,7 +24,7 @@ public class JeroMqAddresses {
     @Bean(name = "inAddresses")
     @Profile("jero")
     public JeroMqAddressContainer inAddresses() {
-        return new JeroMqAddressContainer(Arrays.asList("tcp://169.254.163.142:5000", "tcp://169.254.163.142:5001", "tcp://169.254.163.142:5002", "tcp://169.254.163.142:5003"));
+        return new JeroMqAddressContainer(Arrays.asList("tcp://169.254.243.63:5000", "tcp://169.254.243.63:5001", "tcp://169.254.243.63:5002", "tcp://169.254.243.63:5003"));
     }
 
     @Bean(name = "outAddress")
